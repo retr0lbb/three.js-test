@@ -20,17 +20,21 @@ const geometry = new THREE.BoxGeometry( 10, 10, 10 );
 const material = new THREE.MeshStandardMaterial({color: 0xFF6347});
 const cube = new THREE.Mesh(geometry, material);
 
+const amebientLight = new THREE.AmbientLight(0xffffffff)
+
 const pointOfLight = new THREE.PointLight(0xffffff);
 pointOfLight.position.set(10,5,5);
 
-scene.add(pointOfLight)
+scene.add(pointOfLight, amebientLight)
+
+
 
 scene.add(cube);
 
 function animate(){
-  cube.rotation.x +=0.01
-  cube.rotation.y +=0.02
-  cube.rotation.z += 0.001
+  cube.rotation.x +=0.001
+  cube.rotation.y +=0.002
+  cube.rotation.z += 0.0001
   requestAnimationFrame(animate);
   render.render(scene, camera);
 }
